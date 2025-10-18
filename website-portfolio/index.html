@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Joshua Camp — Systems Builder & Product Development Lead</title>
+  <meta name="description" content="I design and integrate RFID-enabled hardware + software systems end-to-end. Kiosks, handhelds, smart storage, and the UI and API requirements that make them work." />
+  <meta name="theme-color" content="#0e1322" />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="canonical" href="https://your-domain.com/" />
+
+  <!-- OpenGraph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Joshua Camp — Systems Builder & Product Development Lead" />
+  <meta property="og:description" content="Design × Integration × Alignment — I build alignment between people, process, and technology." />
+  <meta property="og:url" content="https://your-domain.com/" />
+  <meta property="og:image" content="./assets/rfid-ecosystem.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Joshua Camp — Systems Builder & Product Development Lead" />
+  <meta name="twitter:description" content="Production systems from discovery to deployment. Measurable outcomes. Operator-first." />
+  <meta name="twitter:image" content="./assets/rfid-ecosystem.png" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Joshua Camp",
+    "jobTitle": "Systems Builder & Product Development Lead",
+    "url": "https://your-domain.com/",
+    "sameAs": ["https://www.linkedin.com/in/joshua-camp-54319328"],
+    "email": "mailto:jcamp.mail@icloud.com",
+    "knowsAbout": ["RFID", "IoT", "Systems Integration", "UI/UX Prototyping", "CAD", "Industrial Design"],
+    "worksFor": {"@type":"Organization", "name":"StaticBay Labs"}
+  }
+  </script>
+
+  <!-- Preload the first above-the-fold media to improve LCP -->
+  <link rel="preload" as="image" href="./assets/rfid-ecosystem.png" imagesrcset="./assets/rfid-ecosystem.png 1200w" imagesizes="(max-width:1120px) 100vw, 1120px" />
+
+  <style>
+    /* ---------- Tokens & Rhythm ---------- */
+    :root{
+      --bg:#0e1322; --surface:#141a2d; --ink:#e9efff; --muted:#a7b1c6; --line:#222c49;
+      --brand:#ff7a1a; --brand-600:#e06b16; --brand-700:#c55f14;
+      --radius:14px; --radius-sm:10px; --container:1120px; --shadow:0 10px 24px rgba(0,0,0,.28);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      --cardMediaH: clamp(200px, 24vw, 260px);
+    }
+
+    /* small utilities to replace inline styles */
+    .mt-10{ margin-top:10px }
+    .mt-14{ margin-top:14px }
+    .pad-20{ padding:20px }
+
+    /* ---------- Base ---------- */
+    *,*::before,*::after{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0; color:var(--ink); font-family:var(--font); line-height:1.6;
+      background: var(--bg);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    img{ max-width:100%; height:auto; display:block }
+    a{ color:var(--ink); text-decoration:none }
+    :where(h1,h2,h3,h4){ line-height:1.2; margin:0 0 1rem }
+    p{ margin:0 0 1rem }
+    ul{ margin:0 0 1rem; padding-left:1.2rem }
+
+    .container{ max-width:var(--container); margin-inline:auto; padding-inline:24px; position:relative }
+    .section{ padding: clamp(56px, 8vw, 96px) 0 }
+    .card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow) }
+    .btn{ background:var(--brand); color:#0b0b0b; padding:.72rem 1.05rem; border-radius:999px; font-weight:700; display:inline-flex; gap:.5rem; align-items:center; border:none; cursor:pointer }
+    .btn:hover{ background:var(--brand-600) } .btn:active{ background:var(--brand-700) }
+    .ghost{ background:transparent; border:1px solid var(--line); color:var(--ink) }
+    .eyebrow{ font-family:var(--mono); color:var(--muted); letter-spacing:.08em; text-transform:uppercase; font-size:.85rem }
+    .title{ font-size: clamp(2.1rem, 5vw, 3.2rem); margin:6px 0 .75rem }
+    .lede{ color:var(--muted); max-width:820px }
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
+    .skip:focus{ left:8px; top:8px; width:auto; height:auto; z-index:999; background:var(--brand); color:#0b0b0b; border-radius:8px; padding:.4rem .6rem }
+
+    /* ---------- Header ---------- */
+    header{ position:sticky; top:0; z-index:40; border-bottom:1px solid var(--line); background: rgba(14,19,34,.85); backdrop-filter: blur(6px) }
+    .nav{ display:flex; align-items:center; justify-content:space-between; height:64px }
+    .brand{ display:flex; gap:10px; align-items:center; font-weight:800 }
+    .brand svg{ width:26px; height:26px }
+    nav a{ color:var(--muted); margin-left:18px; font-weight:600 }
+    nav a:hover, nav a[aria-current="page"]{ color:var(--ink) }
+
+    /* ---------- Hero ---------- */
+    .hero{ display:grid; gap:18px; text-align:left; position:relative; z-index:1 }
+    .quickmeta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px }
+    .chip{ font-family:var(--mono); color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:.35rem .6rem; font-size:.9rem }
+
+    /* ---------- Decorative background images (transparent PNGs) ---------- */
+    .bg-hero-art,
+    .bg-process-art{
+      position:absolute; inset:auto; pointer-events:none; user-select:none; z-index:0; opacity:.18;
+      filter: saturate(1.05);
+    }
+    .bg-hero-art{ top:0; right:0; height:100%; width:auto; max-width:min(42%,560px); object-fit:contain }
+    .bg-process-art{ top:24px; right:0; height:calc(100% - 48px); width:auto; max-width:min(38%,520px); object-fit:contain; opacity:.12 }
+
+    /* ---------- 4×1 vertical list ---------- */
+    .grid{ display:grid; grid-template-columns:1fr; gap:16px }
+
+    /* Card media banner (responsive height) */
+    .cs{ overflow:hidden }
+    .cs .media{
+      position:relative; width:100%; height:var(--cardMediaH);
+      border-bottom:1px solid var(--line); background:#0f1634;
+      border-top-left-radius:var(--radius-sm); border-top-right-radius:var(--radius-sm);
+      overflow:hidden; contain: content;
+    }
+
+    /* Carousels for image cards (1,2,4) */
+    .carousel-track{
+      display:flex; height:100%; width:100%;
+      transform: translateX(0); transition: transform .6s ease;
+      will-change: transform;
+    }
+    .carousel-track img{
+      width:100%; height:var(--cardMediaH); object-fit:cover; flex:0 0 100%; user-select:none;
+    }
+    .dots{ position:absolute; left:0; right:0; bottom:8px; display:flex; justify-content:center; gap:6px }
+    .dot{ width:8px; height:8px; border-radius:999px; background:rgba(255,255,255,.35); border:1px solid rgba(0,0,0,.3) }
+    .dot[aria-current="true"]{ background:#fff }
+
+    /* Video card (3) */
+    .media video{ width:100%; height:var(--cardMediaH); object-fit:cover; display:block; filter:brightness(0.97) }
+
+    /* Body */
+    .cs .body{ padding:14px 16px 16px }
+    .cs h3{ margin:0 0 4px; font-size:1.1rem }
+    .meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px }
+    .tag{ border:1px solid var(--line); border-radius:999px; padding:.28rem .55rem; font-size:.88rem; color:var(--muted); font-family:var(--mono) }
+    .outcome{ margin-top:10px; color:var(--muted); font-size:.95rem }
+
+    /* Lightbox overlay (for image cards only) */
+    .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; z-index:1000 }
+    .lightbox.open{ display:flex }
+    .lightbox-inner{ max-width:min(1200px,92vw); max-height:88vh; position:relative }
+    .lightbox img{ max-width:100%; max-height:88vh; display:block; border-radius:12px }
+    .lb-close,.lb-prev,.lb-next{
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
+      color:#fff; padding:.6rem .8rem; border-radius:10px; cursor:pointer; backdrop-filter: blur(3px)
+    }
+    .lb-close{ top:-44px; right:0; transform:none }
+    .lb-prev{ left:-56px } .lb-next{ right:-56px }
+    @media (max-width:760px){ .lb-prev{ left:6px } .lb-next{ right:6px } }
+
+    /* ---- PROCESS visuals ---- */
+    #process .process{ display:grid; gap:12px }
+    #process .step{
+      display:grid; grid-template-columns:auto 1fr; align-items:start;
+      gap:12px; padding:12px 0; border-bottom:1px solid var(--line)
+    }
+    #process .step:last-child{ border-bottom:none }
+    #process .num{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:34px; height:28px; padding:0 .55rem; font-family:var(--mono); font-weight:800;
+      color:#0b0b0b; background:var(--brand); border-radius:8px
+    }
+
+    /* ---- PRINCIPLES tiles ---- */
+    .section #principles-h + .columns{
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px
+    }
+    .columns .pill{ padding:14px 16px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow) }
+    .columns .pill strong{ display:block; margin-bottom:6px }
+
+    /* Footer */
+    footer{ border-top:1px solid var(--line); color:var(--muted); text-align:center; padding:26px 0 }
+
+    /* Section headings */
+    .section h2{ margin:0 0 12px; font-size:clamp(1.4rem, 2.6vw, 1.9rem) }
+
+    /* Responsive */
+    @media (max-width:640px){ nav a.hide-sm{ display:none } }
+
+    /* Motion & Print */
+    @media (prefers-reduced-motion: reduce){ *{ scroll-behavior:auto } .carousel-track{ transition:none } }
+    @media print{ header, footer, .btn, nav{ display:none !important } body{ background:#fff; color:#000 } .card{ box-shadow:none; border:1px solid #ddd } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header role="banner">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h10a4 4 0 010 8H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M20 18H10a4 4 0 010-8h7" stroke="var(--brand)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Joshua Camp</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#work" class="hide-sm">Case Studies</a>
+        <a href="#process" class="hide-sm">Process</a>
+        <a href="#contact" class="hide-sm">Contact</a>
+        <a class="btn" href="./assets/resume.pdf" download>Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- Hero -->
+    <section id="top" class="section" aria-labelledby="hero-h">
+      <div class="container hero">
+        <img class="bg-hero-art" src="./assets/bg-hero-1.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <span class="eyebrow">Systems Builder & Product Development Lead</span>
+        <h1 id="hero-h" class="title">Design × integration × alignment — I turn complex workflows into connected systems.</h1>
+        <p class="lede">
+          I bridge design, technology, and operations to create connected systems that work where it matters most.
+          From user research and CAD modeling to embedded hardware and UI prototyping, I turn complex processes
+          into cohesive, reliable workflows.
+        </p>
+        <div class="quickmeta" aria-label="focus areas">
+          <span class="chip">Integrated hardware & software systems</span>
+          <span class="chip">CAD → fabrication workflows</span>
+          <span class="chip">UI prototyping & user training</span>
+        </div>
+        <div class="quickmeta" aria-label="key stats">
+          <span class="chip">Process design & optimization</span>
+          <span class="chip">6+ years systems development</span>
+          <span class="chip">$2M+ client impact</span>
+          <span class="chip">Field-tested deployments</span>
+        </div>
+        <div class="mt-14">
+          <a href="#work" class="btn">View case studies</a>
+          <a href="#contact" class="btn ghost" style="margin-left:8px">Start a conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies (4×1 vertical) -->
+    <section id="work" class="section" aria-labelledby="work-h">
+      <div class="container">
+        <h2 id="work-h">Case Studies</h2>
+        <p class="ptext" style="margin:0 0 12px">Role • Scope • Outcome. Short reads with build shots.</p>
+
+        <div class="grid">
+          <!-- 1) RFID Ecosystem (carousel) -->
+          <article class="cs card" aria-labelledby="cs-ecosystem-h">
+            <div class="media" data-gallery="ecosystem">
+              <div class="carousel-track">
+                <img src="./assets/rfid-ecosystem.png" alt="RFID ecosystem overview (kiosk, cart, rack)" loading="eager" fetchpriority="high" decoding="async">
+                <img src="./assets/kiosk-cabinet-hybrid.png" alt="RFID ecosystem detail (placeholder)" loading="lazy" decoding="async">
+                <img src="./assets/rack-smart-cart.png" alt="RFID ecosystem deployment view (placeholder)" loading="lazy" decoding="async">
+              </div>
+              <div class="dots" aria-hidden="true">
+                <span class="dot" aria-current="true"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+            </div>
+            <div class="body">
+              <h3 id="cs-ecosystem-h">RFID Ecosystem — Kiosk, Smart Cart, Hybrid Rack</h3>
+              <div class="meta" aria-label="meta">
+                <span class="tag">Role: System design, HW dev, ecosystem integration</span>
+                <span class="tag">Scope: End-to-end tool-control infra (Positive Fusion / Fusion Flex)</span>
+                <span class="tag">Outcome: Live audits, dynamic BoM, access-controlled storage</span>
+              </div>
+              <p class="outcome">Designed and built an integrated hardware suite—including a smart cart, RFID rack, and hybrid tool cabinet/kiosk—linking embedded electronics and software endpoints into a single operational network. Each unit was engineered in-house for seamless interoperability with Positive Fusion, Fusion Assist, Fusion Flex, and PF Keys applications. The deployment established a compact, self-contained ecosystem demonstrating how localized hardware can mirror enterprise-level tool-tracking efficiency.</p>
+              <p class="ptext"><strong>Delivery:</strong> Oct 2024 → Apr 2025.</p>
+            </div>
+          </article>
+
+          <!-- 2) Mobile RFID Scanner (carousel) -->
+          <article class="cs card" aria-labelledby="cs-scanner-h">
+            <div class="media" data-gallery="scanner">
+              <div class="carousel-track">
+                <img src="./assets/rfid-scanner.png" alt="Mobile RFID scanner product shot" loading="eager" decoding="async">
+                <img src="./assets/scanner-version-1.png" alt="Scanner iteration / bench (placeholder)" loading="lazy" decoding="async">
+                <img src="./assets/rfid-scanner-3.png" alt="Scanner in field use (placeholder)" loading="lazy" decoding="async">
+              </div>
+              <div class="dots" aria-hidden="true">
+                <span class="dot" aria-current="true"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+            </div>
+            <div class="body">
+              <h3 id="cs-scanner-h">Mobile RFID Scanner — Portable Fixed-Reader System</h3>
+              <div class="meta">
+                <span class="tag">Role: Concept dev, industrial design, embedded integration</span>
+                <span class="tag">Scope: Mobile fixed-reader, offline ops, FOD prevention</span>
+                <span class="tag">Outcome: $2M+ savings via loss prevention & efficiency</span>
+              </div>
+              <p class="outcome">Originally conceived in 2019 to extend Positive Fusion’s reach beyond networked zones, the Mobile RFID Scanner redefined what portable inventory control could be. Built from the ground up—starting with an 80/20 frame and laser-formed acrylic housing—the design has evolved through seven major iterations, each improving form factor, power management, and system integration. The latest version features a custom 3D-printed chassis, modular electronics bay, fanless micro-PC, and 7” touchscreen interface, supporting variable voltage (12–24V) and six-hour battery operation.
+                The device enables rapid, offline audits, live asset tracking, and real-time tool recovery—bridging the gap between fixed infrastructure and field mobility.</p>
+            </div>
+          </article>
+
+          <!-- 3) Positive Fusion Series (single autoplay video, no lightbox) -->
+          <article class="cs card" aria-labelledby="cs-demos-h">
+            <div class="media">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="./assets/custom-animation.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="body">
+              <h3 id="cs-demos-h">Product Overviews & Software Demos — Positive Fusion Series</h3>
+              <div class="meta">
+                <span class="tag">Role: Scriptwriting, video production, tech comms</span>
+                <span class="tag">Scope: Six-part series for education & demos</span>
+                <span class="tag">Outcome: 50+ minutes used in demos & onboarding</span>
+              </div>
+              <p class="outcome">To strengthen Positive Fusion’s demo and training process, I developed a structured video series that walks through every core function of the system—from data management and map-based visualization to controlled zones and audit automation. Each episode was scripted, narrated, and produced in-house using Adobe Creative Cloud tools. Leveraging AI-generated voiceovers, live system recordings, and custom animations, I transformed complex platform features into clear, engaging visual stories that help customers and partners understand the software’s real-world impact.</p>
+              <div class="mt-10">
+                <a class="btn" href="https://www.youtube.com/playlist?list=PL8Fs1XvRi5OHwMQM1YH9GWlMCPqdT8RwS" target="_blank" rel="noreferrer noopener">Watch Playlist</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4) QuickTrack (carousel) -->
+          <article class="cs card" aria-labelledby="cs-quicktrack-h">
+            <div class="media" data-gallery="quicktrack">
+              <div class="carousel-track">
+                <img src="./assets/quicktrack-1.png" alt="QuickTrack web app UI" loading="eager" decoding="async">
+                <img src="./assets/quicktrack-2.png" alt="QuickTrack dashboard detail (placeholder)" loading="lazy" decoding="async">
+                <img src="./assets/quicktrack-3.png" alt="QuickTrack service flow (placeholder)" loading="lazy" decoding="async">
+              </div>
+              <div class="dots" aria-hidden="true">
+                <span class="dot" aria-current="true"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+            </div>
+            <div class="body">
+              <h3 id="cs-quicktrack-h">QuickTrack — Service Request System</h3>
+              <div class="meta">
+                <span class="tag">Role: Product strategy, UX architecture, systems design</span>
+                <span class="tag">Scope: Real-time service requests for facilities</span>
+                <span class="tag">Outcome: Functional, deploy-ready platform</span>
+              </div>
+              <p class="outcome">QuickTrack was conceived during a 2025 field visit after observing inefficiencies in how managers handled constant in-person requests. The result is a lightweight, browser-based platform that replaces informal communication with structured, traceable workflows.
+                Developed using modern visual development tools and guided by systematic design thinking, the app includes secure user authentication, configurable service types, live dashboards, and audit-ready reporting. The current build is fully operational and ready for deployment, with ongoing refinements to expand capability and scalability.</p>
+              <ul class="ptext" style="margin:10px 0 0; padding-left:18px">
+                <li>PIN login for kiosk/desktop</li>
+                <li>Configurable categories & request types</li>
+                <li>Real-time ticket tracking with chat</li>
+                <li>Role-based permissions</li>
+                <li>Analytics & audit history</li>
+              </ul>
+              <p class="ptext" style="margin:12px 0 0"><em>Takeaway:</em> QuickTrack transforms constant interruptions into an organized service network—demonstrating how practical system design and iterative development can evolve real-world challenges into intelligent, production-ready tools.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section" aria-labelledby="process-h">
+      <div class="container">
+        <img class="bg-process-art" src="./assets/bg-hero-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <h2 id="process-h">Process</h2>
+        <div class="process">
+          <div class="step">
+            <div class="num">01</div>
+            <div>
+              <strong>Discover & Define</strong>
+              <p class="ptext">Walk the floor, map the workflow, define constraints and success criteria (what “done” means in the real world).</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">02</div>
+            <div>
+              <strong>Model & Prototype</strong>
+              <p class="ptext">Prove it small and sturdy. Validate reads, ergonomics, and serviceability. Convert to manufacturable CAD and materials.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">03</div>
+            <div>
+              <strong>Integrate & Align</strong>
+              <p class="ptext">Define API requirements, map UI touchpoints, and specify operator feedback signals. Coordinate with software engineers to close the loop with audits and accountability.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">04</div>
+            <div>
+              <strong>Deploy & Improve</strong>
+              <p class="ptext">Ship what’s durable, document what matters, train teams, capture feedback, and iterate for measurable gains.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Principles -->
+    <section class="section" aria-labelledby="principles-h">
+      <div class="container">
+        <h2 id="principles-h">Principles</h2>
+        <div class="columns">
+          <div class="pill card"><strong>Ownership over hand-offs.</strong><div class="ptext">Carry projects across the line. Reduce friction between siloed teams.</div></div>
+          <div class="pill card"><strong>Operators are the users.</strong><div class="ptext">Every system is built to serve the people who use it daily. Designs should remove friction and provide immediate, intuitive feedback—whether through physical layout, interface cues, or equipment function.</div></div>
+          <div class="pill card"><strong>Make it maintainable.</strong><div class="ptext">Fast to service, easy to train, and built from parts you can actually get.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section" aria-labelledby="contact-h">
+      <div class="container">
+        <h2 id="contact-h">Contact</h2>
+        <div class="card pad-20">
+          <p class="ptext">Prefer using your own email client? Copy my address to paste into your provider, or connect on LinkedIn.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <button class="btn" type="button" id="copyEmailBtn" data-email="jcamp.mail@icloud.com">Email directly</button>
+            <a class="ghost btn" href="https://linkedin.com/in/joshua-camp-54319328" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+          </div>
+          <p id="copyConfirm" class="ptext" style="margin:10px 0 0; display:none;" role="status" aria-live="polite">Email copied to clipboard.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Joshua Camp — Systems Builder & Product Development Lead</div>
+  </footer>
+
+  <!-- Lightbox (images only) -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer">
+    <div class="lightbox-inner">
+      <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+      <button class="lb-prev" id="lbPrev" aria-label="Previous">◀</button>
+      <img id="lbImage" alt="">
+      <button class="lb-next" id="lbNext" aria-label="Next">▶</button>
+    </div>
+  </div>
+
+  <script>
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // highlight current section
+    const navLinks = Array.from(document.querySelectorAll('header nav a')).filter(a => a.hash);
+    const sections = navLinks.map(a => document.querySelector(a.hash)).filter(Boolean);
+    const setCurrent = (id) => {
+      navLinks.forEach(l => l.removeAttribute('aria-current'));
+      const link = navLinks.find(l => l.hash === id);
+      if (link) link.setAttribute('aria-current','page');
+    };
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) setCurrent('#' + e.target.id);
+    }, {rootMargin:'-50% 0px -45% 0px'});
+    sections.forEach(s => io.observe(s));
+
+    // Copy email to clipboard
+    const copyBtn = document.getElementById('copyEmailBtn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        const email = copyBtn.getAttribute('data-email');
+        try {
+          await navigator.clipboard.writeText(email);
+          const note = document.getElementById('copyConfirm');
+          if (note) {
+            note.style.display = 'block';
+            note.textContent = 'Email copied to clipboard';
+            setTimeout(() => (note.style.display = 'none'), 2500);
+          }
+        } catch { window.prompt('Copy this email address:', email); }
+      }, { passive: true });
+    }
+
+    // ----- Auto-sliding carousel + lightbox (for image cards only) -----
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Lightbox state
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImage');
+    const lbClose = document.getElementById('lbClose');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    let lbGallery = [];
+    let lbIndex = 0;
+
+    function openLightbox(images, index){
+      lbGallery = images;
+      lbIndex = index;
+      lbImg.src = lbGallery[lbIndex].src;
+      lbImg.alt = lbGallery[lbIndex].alt || '';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden'; // lock scroll while open
+    }
+    function closeLightbox(){
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function showPrev(){ lbIndex = (lbIndex - 1 + lbGallery.length) % lbGallery.length; lbImg.src = lbGallery[lbIndex].src; }
+    function showNext(){ lbIndex = (lbIndex + 1) % lbGallery.length; lbImg.src = lbGallery[lbIndex].src; }
+
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', showPrev);
+    lbNext.addEventListener('click', showNext);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', (e)=>{
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowLeft') showPrev();
+      if(e.key === 'ArrowRight') showNext();
+    });
+
+    // init each carousel (only those that actually have a track; ignores the video card)
+    document.querySelectorAll('.media').forEach((wrap)=>{
+      const track = wrap.querySelector('.carousel-track');
+      if (!track) return; // skip the video card
+
+      const imgs = track.querySelectorAll('img');
+      const dots = wrap.querySelectorAll('.dot');
+      let idx = 0, timer = null;
+
+      const setSlide = (i)=>{
+        idx = i;
+        track.style.transform = `translateX(${-idx * 100}%)`;
+        dots.forEach((d,di)=> d.setAttribute('aria-current', di===idx ? 'true':'false'));
+      };
+
+      imgs.forEach((img, i)=>{
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', ()=> openLightbox(Array.from(imgs), i));
+      });
+
+      const start = ()=>{
+        if (prefersReduced || timer) return;
+        timer = setInterval(()=> setSlide((idx+1)%imgs.length), 4000);
+      };
+      const stop = ()=> { if(timer){ clearInterval(timer); timer = null; } };
+
+      wrap.addEventListener('mouseenter', stop);
+      wrap.addEventListener('mouseleave', start);
+
+      dots.forEach((d,di)=> d.addEventListener('click', ()=> setSlide(di)));
+
+      // kick off
+      setSlide(0);
+      start();
+
+      // pause autoplay when not visible enough
+      const vis = new IntersectionObserver((entries)=>{
+        for (const e of entries) e.isIntersecting ? start() : stop();
+      }, { threshold: 0.5 });
+      vis.observe(wrap);
+    });
+  </script>
+</body>
+</html>
